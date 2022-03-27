@@ -1,6 +1,17 @@
 package util;
 
+import java.io.IOException;
+import java.util.List;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.maps.GeoApiContext;
+import com.google.maps.GeocodingApi;
+import com.google.maps.errors.ApiException;
+import com.google.maps.model.GeocodingResult;
+import com.google.maps.model.LatLng;
 
 
 /**
@@ -29,6 +40,31 @@ public class MapGlobal {
 		return context;
 	}
 	
+	public LatLng geoCode(String address) {
+		GeocodingResult[] result = null;
+		
+		try {
+			result = GeocodingApi.geocode(getContext(), address).await();
+			
+		} catch (ApiException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		LatLng location = result[0].geometry.location;
+		
+		System.out.println(location.lat);
+		System.out.println(location.lng);
+		
+		return location;
+		
+	}
 	
 	
 }

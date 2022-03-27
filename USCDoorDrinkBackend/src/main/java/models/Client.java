@@ -2,11 +2,14 @@ package models;
 
 import java.util.UUID;
 
-public class Client {
+import com.google.maps.model.LatLng;
+
+public abstract class Client {
 	protected String username;
 	protected String name;
 	protected String password;
 	protected  String address;
+	protected LatLng location;
 	protected int id;
 	
 	
