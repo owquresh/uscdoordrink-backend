@@ -12,12 +12,12 @@ import com.google.maps.model.LatLng;
 
 import models.Shop;
 
-public class CustomerMapDAO implements UserDAO{
+public class CustomerMapDAO{
 
 	
 	
 	public static final String URL = "jdbc:mysql://localhost:3306/uscdoordrink";
-	public static final String USER = "sammy";
+	public static final String USER = "root";
 	public static final String PASS = "root";
 	
 	
@@ -32,19 +32,7 @@ public class CustomerMapDAO implements UserDAO{
 		
 	}
 
-	@Override
-	public boolean delete() {
-		return false;
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean update() {
-		return false;
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	
 	public ArrayList<Integer> search(LatLng coord) {
@@ -110,11 +98,7 @@ public class CustomerMapDAO implements UserDAO{
 		return lsit;
 	}
 
-	@Override
-	public <T> boolean find(T t) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	
 

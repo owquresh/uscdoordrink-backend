@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.maps.model.LatLng;
+
+import dbcontrol.UserDAO;
+import dbcontrol.UserRegisterDAO;
 import util.MapGlobal;
 
 
@@ -35,40 +39,52 @@ public class Register extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String name = request.getParameter("name");
-		String username = request.getParameter("username");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		String address = request.getParameter("address");
-		String city = request.getParameter("city");
-		String state = request.getParameter("state");
-		String postal = request.getParameter("postal");
-		
-		
-		//System.out.println(MapGlobal.getInstance().geoCode("1600 Amphitheatre Parkway Mountain View, CA 94043").toString());
-		//System.out.println("Request sent through");
-		System.out.println("Name: "+name+"/n"+
-				"Username: "+username+"/n"+
-				"Email: "+email+"/n"+
-				"Password: "+password+"/n"+
-				"Address: "+address+"/n"+
-				"City"+city+"/n"+
-				"State: "+state+"/n"+
-				"Postal: "+postal+"/n");
+		// TODO Auto-gprintln("Request sent through");
 		
 		
 	}
+
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-	
-		System.out.println("Request sent through");
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		System.out.println(password);
+		String address = request.getParameter("address");
+		String city = request.getParameter("city");
+		String state = request.getParameter("state");
+	
+		String postal = request.getParameter("postal");
+		//int type = Integer.parseInt(request.getParameter("type"));
+		String type = request.getParameter("type");
+		
+		String newType = (type.equals("Customer")) ? (newType = "customers") :  (newType = "shops");
+		
+		LatLng location = MapGlobal.getInstance().geoCode(address + "," +  " " + state + " " + postal);
+		String lat = String.valueOf(location.lat);
+		String lng = String.valueOf(location.lng);
+		
+		System.out.println("Name: "+name+"/n"+
+				"Email: "+email+"/n"+
+				"Password: "+password+"/n"+
+				"Address: "+address+"/n"+
+				"City"+city+"/n"+
+				"State: "+state+"/n"+
+				"Postal: "+postal+"/n" +
+				"Location:" +location+"/n"
+				);
+		
+		
+		UserDAO dao = new UserRegisterDAO();
+		dao.insert(newType, email, name, password, address, state, lat, lng,city, postal);
+		
+		response.setStatus(200);
+		
+		
 	}
 
 }
