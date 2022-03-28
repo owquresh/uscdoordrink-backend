@@ -36,12 +36,27 @@ public class Register extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		System.out.println(MapGlobal.getInstance().geoCode("1600 Amphitheatre Parkway Mountain View, CA 94043").toString());
-		System.out.println("Request sent through");
+		String name = request.getParameter("name");
+		String username = request.getParameter("username");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		System.out.println();
-		String address = request.getParameter("address").toString();
+		String address = request.getParameter("address");
+		String city = request.getParameter("city");
+		String state = request.getParameter("state");
+		String postal = request.getParameter("postal");
+		
+		
+		//System.out.println(MapGlobal.getInstance().geoCode("1600 Amphitheatre Parkway Mountain View, CA 94043").toString());
+		//System.out.println("Request sent through");
+		System.out.println("Name: "+name+"/n"+
+				"Username: "+username+"/n"+
+				"Email: "+email+"/n"+
+				"Password: "+password+"/n"+
+				"Address: "+address+"/n"+
+				"City"+city+"/n"+
+				"State: "+state+"/n"+
+				"Postal: "+postal+"/n");
+		
 		
 	}
 
