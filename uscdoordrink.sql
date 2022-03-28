@@ -4,6 +4,7 @@ use uscdoordrink;
 
 create table if not exists customers(
 	email varchar(255) unique not null,
+	name varchar(255) not null,
 	password varchar(100) not null,
 	id mediumint not null auto_increment, 
 	address varchar(255) not null,
@@ -18,6 +19,7 @@ create table if not exists customers(
 
 create table if not exists shops(
 	email varchar(255) unique not null,
+	name varchar(255) not null,
 	password varchar(100) not null,
 	id mediumint not null auto_increment, 
 	address varchar(255) not null,
