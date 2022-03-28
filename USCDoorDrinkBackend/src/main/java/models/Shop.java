@@ -3,18 +3,16 @@ package models;
 public class Shop {
 
 	private String email;
-	private String password;
 	private int id;
 	private String address;
 	private String state;
 	private String postal;
 	private double lat;
 	private double lng;
-	public Shop(String email, String password, int id, String address, String state, String postal, double lat,
+	public Shop(String email, int id, String address, String state, String postal, double lat,
 			double lng) {
 		super();
 		this.email = email;
-		this.password = password;
 		this.id = id;
 		this.address = address;
 		this.state = state;
@@ -28,12 +26,7 @@ public class Shop {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
+
 	public int getId() {
 		return id;
 	}

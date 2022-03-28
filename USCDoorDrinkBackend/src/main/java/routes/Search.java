@@ -2,6 +2,7 @@ package routes;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.maps.model.LatLng;
 
+import dbcontrol.CustomerMapDAO;
+import dbcontrol.UserDAO;
 import util.GsonGlobal;
 
 /**
@@ -35,20 +38,18 @@ public class Search extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		double lat = Double.parseDouble(request.getParameter("lat"));
-		double lng = Double.parseDouble(request.getParameter("lng"));
+	
+		CustomerMapDAO dao = new CustomerMapDAO();
+		LatLng location = new LatLng(34.146490,-117.303980 );
+		ArrayList<Integer> idList = dao.search(location);
 		
-		LatLng location = new LatLng(0,0);
-		String json = GsonGlobal.getInstance().getGson().toJson(location);
+		String jsonString = GsonGlobal.getInstance().toJson(idList);
 		
-		DatabaseInterface controller = new DatabaseInterface();
-		
-		controller.search();
 		
 		PrintWriter out = response.getWriter();
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		out.print(json);
+		out.print(jsonString);
 		out.flush();
 	}
 

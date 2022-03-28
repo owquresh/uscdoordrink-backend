@@ -13,8 +13,13 @@ public class ConnectionFactory {
 	public static Connection initializeConnection() {
 		Connection conn = null;
 		try {
+
+        	Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(URL, USER, PASS);
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

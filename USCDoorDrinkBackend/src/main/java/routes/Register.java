@@ -50,9 +50,10 @@ public class Register extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+	
 		System.out.println("Request sent through");
-		
+		String password = request.getParameter("password");
+		System.out.println(password);
 	}
 
 }

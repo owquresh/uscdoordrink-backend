@@ -10,6 +10,8 @@ import java.util.List;
 
 import com.google.maps.model.LatLng;
 
+import models.Shop;
+
 public class CustomerMapDAO implements UserDAO{
 
 	
@@ -20,8 +22,8 @@ public class CustomerMapDAO implements UserDAO{
 	
 	
 	private String insertion = "INSERT INTO customers(?,?,?,?,?,?)";
-	private String searchMap = "SELECT id, (3959 *acos(cos(radians(37))*cos(radians(lat))*cos(radians(lng)-radians(?))+sin(radians(?))*sin(radians(lat )))) AS distance FROM shops HAVING distance < 15 ORDER BY distance LIMIT 0, 20";
-	privaate String findShop = SELECT 
+	private String searchMap = "SELECT id, (3959 *acos(cos(radians(?))*cos(radians(lat))*cos(radians(lng)-radians(?))+sin(radians(?))*sin(radians(lat )))) AS distance FROM shops HAVING distance < 15 ORDER BY distance LIMIT 0, 20";
+	private String findShop = "SELECT * FROM shops WHERE id = ?";
 	
 	
 	public boolean insert() {
@@ -45,14 +47,15 @@ public class CustomerMapDAO implements UserDAO{
 	}
 
 	
-	public List<Integer> search(LatLng coord) {
+	public ArrayList<Integer> search(LatLng coord) {
 		// TODO Auto-generated method stub
-		List<Integer> idList = new ArrayList<Integer>();
+		ArrayList<Integer> idList = new ArrayList<Integer>();
 		Connection conn = ConnectionFactory.initializeConnection();
 		try {
 			PreparedStatement prep = conn.prepareStatement(searchMap);
-			prep.setString(1, String.valueOf(coord.lng));
-			prep.setString(2, String.valueOf(coord.lat));
+			prep.setString(1, String.valueOf(coord.lat));
+			prep.setString(2, String.valueOf(coord.lng));
+			prep.setString(3, String.valueOf(coord.lat));
 			ResultSet resObj = prep.executeQuery();
 			while(resObj.next()) {
 				
@@ -74,12 +77,45 @@ public class CustomerMapDAO implements UserDAO{
 		return idList;
 	}
 
-	@Override
-	public boolean find() {
+	public ArrayList<Shop> find(Integer id) {
 		// TODO Auto-generated method stub
+		Connection conn = ConnectionFactory.initializeConnection();
+		ArrayList<Shop> lsit = new ArrayList<Shop>();
+		try {
+			PreparedStatement prep = conn.prepareStatement(findShop);
+			prep.setString(1, id.toString());
+			ResultSet res = prep.executeQuery();
+			while(res.next()) {
+				String address = res.getString("addresss");
+				String email = res.getString("email");
+				String postal = res.getString("postal;");
+				String state = res.getString("state");
+				int _id = res.getInt("id");
+				double lat = res.getDouble("lat");
+				double lng = res.getDouble("lng");
+				
+				Shop shop = new Shop(email, _id, address, state, postal, lat, lng);
+				lsit.add(shop);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 		
+		try {
+			conn.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 		
+		return lsit;
+	}
+
+	@Override
+	public <T> boolean find(T t) {
+		// TODO Auto-generated method stub
 		return false;
 	}
+
+	
 
 }
