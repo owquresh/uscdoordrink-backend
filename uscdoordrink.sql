@@ -9,6 +9,7 @@ create table if not exists customers(
 	address varchar(255) not null,
 	state char(2) not null,
 	postal char(5) not null,
+	city varchar(255) not null,
 	lat decimal(10,8) not null,
 	lng decimal(11,8) not null,
 	primary key(id)
@@ -23,6 +24,7 @@ create table if not exists shops(
 	state char(2) not null,
 	lat decimal(10,8) not null,
 	lng decimal(11,8) not null,
+	city varchar(255) not null,
 	postal char(5) not null,
 	primary key(id)
 	
