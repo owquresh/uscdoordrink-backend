@@ -4,7 +4,7 @@ public interface UserDAO {
 	
 	public boolean insert();
 	public boolean delete();
-	public boolean find();
+	public <T> boolean find(T t);
 	public boolean update();
 
 }
