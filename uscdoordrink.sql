@@ -37,7 +37,7 @@ create table if not exists shopitems(
 	shopID mediumint not null,
 	item varchar(30) not null,
 	description varchar(100),
-	url varchar(60000),  
+	url varchar(2083),  
 	foreign key(shopID) references shops(id)
 );
 
