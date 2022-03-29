@@ -82,8 +82,8 @@ public class CustomerMapDAO{
 				double lat = res.getDouble("lat");
 				double lng = res.getDouble("lng");
 				
-				Shop shop = new Shop(email, _id, address, state, postal, lat, lng);
-				lsit.add(shop);
+//				Shop shop = new Shop(email, _id, address, state, postal, lat, lng);
+//				lsit.add(shop);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
