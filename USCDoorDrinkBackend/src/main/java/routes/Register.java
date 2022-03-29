@@ -68,14 +68,14 @@ public class Register extends HttpServlet {
 		String lat = String.valueOf(location.lat);
 		String lng = String.valueOf(location.lng);
 		
-		System.out.println("Name: "+name+"/n"+
-				"Email: "+email+"/n"+
-				"Password: "+password+"/n"+
-				"Address: "+address+"/n"+
-				"City"+city+"/n"+
-				"State: "+state+"/n"+
-				"Postal: "+postal+"/n" +
-				"Location:" +location+"/n"
+		System.out.println("Name: "+name+"\n"+
+				"Email: "+email+"\n"+
+				"Password: "+password+"\n"+
+				"Address: "+address+"\n"+
+				"City"+city+"\n"+
+				"State: "+state+"\n"+
+				"Postal: "+postal+"\n" +
+				"Location:" +location+"\n"
 				);
 		
 		

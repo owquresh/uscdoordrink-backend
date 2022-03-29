@@ -8,6 +8,7 @@ public interface UserDAO {
 	public boolean update();
 	boolean insert(String type, String email, String name, String password, String addresss, String state, String lat,
 			String lng, String city, String postal);
+	public boolean find(String email, String password, String type);
 	
 
 }

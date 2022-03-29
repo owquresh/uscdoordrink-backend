@@ -73,6 +73,13 @@ public class UserRegisterDAO implements UserDAO{
 		return false;
 	}
 
+	@Override
+	public boolean find(String email, String password, String type) {
+		return false;
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 
