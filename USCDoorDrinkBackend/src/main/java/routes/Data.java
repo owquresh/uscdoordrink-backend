@@ -17,6 +17,7 @@ import com.google.maps.model.LatLng;
 import dbcontrol.ConnectionFactory;
 import dbcontrol.UserDAO;
 import dbcontrol.UserRegisterDAO;
+import models.Customer;
 import models.Shop;
 import util.GsonGlobal;
 import util.MapGlobal;
@@ -98,6 +99,43 @@ public class Data extends HttpServlet {
                st.close();
            }
            else{
+               String query = "SELECT name, email, password, address, state, postal, city FROM customers WHERE email=\""+emailParam+"\"";
+
+               // create the java statement
+               PreparedStatement st = conn.prepareStatement(query);
+               System.out.println(request.getParameter("email"));
+               //st.setString(1, emailParam);
+
+
+               // execute the query, and get a java resultset
+               ResultSet rs = st.executeQuery(query);
+               ArrayList<Customer> customers  = new ArrayList<Customer>();
+               // iterate through the java resultset
+               while (rs.next())
+               {
+                   String name = rs.getString("name");
+                   String email = rs.getString("email");
+                   String password = rs.getString("password");
+                   String address = rs.getString("address");
+                   String state = rs.getString("state");
+                   String postal = rs.getString("postal");
+                   String city = rs.getString("city");
+                   Customer curr = new Customer(name, email, password, address, state, city, postal);
+                   customers.add(curr);
+
+
+                   System.out.println(name + " " + email+ " "+ password + " " + address + " " + state + " " + postal + " " + city);
+                   System.out.println("");
+                   // print the results
+                   System.out.println(curr.getName() + curr.getEmail() + curr.getPass() + curr.getAddress() + curr.getState() + curr.getCity() + curr.getPostal());
+               }
+               response.setContentType("application/json");
+               response.setCharacterEncoding("UTF-8");
+               PrintWriter pw = response.getWriter();
+               pw.print(GsonGlobal.getInstance().toJson(customers));
+               pw.flush();
+
+               st.close();
 
            }
         }
