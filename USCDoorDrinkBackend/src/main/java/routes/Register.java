@@ -64,6 +64,13 @@ public class Register extends HttpServlet {
 		
 		String newType = (type.equals("Customer")) ? (newType = "customers") :  (newType = "shops");
 		
+		if( name == null|| email==null || password==null|| address==null || city==null || state==null
+				|| postal == null || type == null) {
+			response.setStatus(500);
+			response.sendError(500);
+			return;
+		}
+		
 		LatLng location = MapGlobal.getInstance().geoCode(address + "," +  " " + state + " " + postal);
 		String lat = String.valueOf(location.lat);
 		String lng = String.valueOf(location.lng);
@@ -80,9 +87,14 @@ public class Register extends HttpServlet {
 		
 		
 		UserDAO dao = new UserRegisterDAO();
-		dao.insert(newType, email, name, password, address, state, lat, lng,city, postal);
 		
-		response.setStatus(200);
+		boolean res = dao.insert(newType, email, name, password, address, state, lat, lng,city, postal);
+		if(res == false) {
+			response.setStatus(500);
+		}else {
+			response.setStatus(200);
+		}
+		
 		
 		
 	}

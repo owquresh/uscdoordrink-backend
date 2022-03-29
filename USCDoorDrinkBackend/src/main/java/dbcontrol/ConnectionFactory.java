@@ -8,10 +8,11 @@ public class ConnectionFactory {
 
 	public static final String URL = "jdbc:mysql://localhost:3306/uscdoordrink";
 	public static final String USER = "root";
-	public static final String PASS = "12345678";
+	public static final String PASS = "root";
 	
+	public static Connection conn;
 	public static Connection initializeConnection() {
-		Connection conn = null;
+		conn = null;
 		try {
 
         	Class.forName("com.mysql.cj.jdbc.Driver");
@@ -25,6 +26,17 @@ public class ConnectionFactory {
 		}
 		return conn;
 		
+		
+	}
+
+	public static void closeConnection() {
+		// TODO Auto-generated method stub
+		try {
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
