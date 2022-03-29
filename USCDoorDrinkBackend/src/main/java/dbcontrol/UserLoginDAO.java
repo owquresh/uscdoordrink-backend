@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserLoginDAO implements UserDAO {
-	public static final String URL = "jdbc:mysql://localhost:3306/uscdoordrink";
-	public static final String USER = "root";
-	public static final String PASS = "12345678";
+
 
 	//SELECT email, password FROM uscdoordrink.shops WHERE email="shop1@gmail"
 	@Override

@@ -16,9 +16,7 @@ public class CustomerMapDAO{
 
 	
 	
-	public static final String URL = "jdbc:mysql://localhost:3306/uscdoordrink";
-	public static final String USER = "root";
-	public static final String PASS = "root";
+
 	
 	
 	private String insertion = "INSERT INTO customers(?,?,?,?,?,?)";
