@@ -19,6 +19,11 @@ public class UserRegisterDAO implements UserDAO{
 		// TODO Auto-generated method stub
 		
 		Connection conn = ConnectionFactory.initializeConnection();
+		
+		if( name == null|| email==null || password==null|| address==null || city==null || state==null
+				|| postal == null || type == null || lat==null || lng == null) {
+			return false;
+		}
 		try {
 			PreparedStatement prep = null;
 			if(type.equals("customers")) {
@@ -43,16 +48,14 @@ public class UserRegisterDAO implements UserDAO{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			ConnectionFactory.closeConnection();
+			return false;
 			
 		}
-		try {
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 		
-		return false;
+		
+		
 	}
 
 	@Override

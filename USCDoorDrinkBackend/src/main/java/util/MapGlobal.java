@@ -42,7 +42,7 @@ public class MapGlobal {
 	
 	public LatLng geoCode(String address) {
 		GeocodingResult[] result = null;
-		
+		LatLng location = null;
 		try {
 			result = GeocodingApi.geocode(getContext(), address).await();
 			
@@ -57,10 +57,10 @@ public class MapGlobal {
 			e.printStackTrace();
 		}
 		
-		LatLng location = result[0].geometry.location;
-		
-		System.out.println(location.lat);
-		System.out.println(location.lng);
+		if(result.length >= 1) {
+			location =  result[0].geometry.location;
+		}
+	
 		
 		return location;
 		
