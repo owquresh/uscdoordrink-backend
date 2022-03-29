@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class UserRegisterDAO implements UserDAO{
 
 	
-	public static final String URL = "jdbc:mysql://localhost:3306/uscdoordrink";
+	public static final String URL = "jdbc:mysql://localhost:8082/uscdoordrink";
 	public static final String USER = "root";
 	public static final String PASS = "root";
 	public static final String addUserCustomers = "INSERT INTO customers (email,name,password,address,state,lat,lng,city,postal) VALUES(?,?,?,?,?,?,?,?,?)";

@@ -2,16 +2,21 @@ package models;
 
 public class Shop {
 
+	private String name;
 	private String email;
+	private String pass;
 	private int id;
 	private String address;
 	private String state;
 	private String postal;
+	private String city;
 	private double lat;
 	private double lng;
-	public Shop(String email, int id, String address, String state, String postal, double lat,
-			double lng) {
+	public Shop(String name, String email, String pass, String address, String state, String city, String postal) {
 		super();
+		this.name = name;
+		this.pass = pass;
+		this.city = city;
 		this.email = email;
 		this.id = id;
 		this.address = address;
@@ -27,6 +32,9 @@ public class Shop {
 		this.email = email;
 	}
 
+	public String getName() {return name;}
+	public String getPass() {return pass;}
+	public String getCity() {return city;}
 	public int getId() {
 		return id;
 	}
