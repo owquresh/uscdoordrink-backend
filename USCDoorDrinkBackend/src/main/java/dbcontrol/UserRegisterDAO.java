@@ -3,6 +3,7 @@ package dbcontrol;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 
 public class UserRegisterDAO implements UserDAO{
 
@@ -18,10 +19,11 @@ public class UserRegisterDAO implements UserDAO{
 		
 		Connection conn = ConnectionFactory.initializeConnection();
 		
-		if( name == null|| email==null || password==null|| address==null || city==null || state==null
+		if(name == null|| validEmail(email) || password==null|| address==null || city==null || state==null
 				|| postal == null || type == null || lat==null || lng == null) {
 			return false;
 		}
+	
 		try {
 			PreparedStatement prep = null;
 			if(type.equals("customers")) {
@@ -80,8 +82,15 @@ public class UserRegisterDAO implements UserDAO{
 		// TODO Auto-generated method stub
 		
 	}
-
 	
-
+	public static boolean validEmail(String email) {
+		String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+		Pattern pattern = Pattern.compile(emailRegex);
+		if (email == null) return false;
+		return pattern.matcher(email).matches();
+	}
 
 }
