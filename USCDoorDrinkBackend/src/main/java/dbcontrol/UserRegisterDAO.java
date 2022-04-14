@@ -12,7 +12,6 @@ public class UserRegisterDAO implements UserDAO{
 	public static final String addUserShops = "INSERT INTO shops(email,name,password,address,state,lat,lng,city,postal) VALUES(?,?,?,?,?,?,?,?,?)";
 
 	
-	@Override
 	public boolean insert(String type, String email, String name, String password, String address, String state, String lat, String lng, String city, String postal ) {
 		// TODO Auto-generated method stub
 		

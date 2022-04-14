@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.maps.model.LatLng;
 
 import dbcontrol.CustomerMapDAO;
-import dbcontrol.UserDAO;
+import models.Shop;
 import util.GsonGlobal;
 
 /**
@@ -36,20 +36,20 @@ public class Search extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 		
 	
 		CustomerMapDAO dao = new CustomerMapDAO();
-		LatLng location = new LatLng(34.146490,-117.303980 );
-		ArrayList<Integer> idList = dao.search(location);
-		
-		String jsonString = GsonGlobal.getInstance().toJson(idList);
-		
+		double lat  = Double.parseDouble(request.getParameter("lat"));
+		double lng  = Double.parseDouble(request.getParameter("lng"));
+		ArrayList<Shop> list = dao.find(1);
+		String jsonString = GsonGlobal.getInstance().toJson(list);
+	
 		
 		PrintWriter out = response.getWriter();
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		out.print(jsonString);
+		out.write(jsonString);
 		out.flush();
 	}
 
@@ -58,7 +58,20 @@ public class Search extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		CustomerMapDAO dao = new CustomerMapDAO();
+		double lat  = Double.parseDouble(request.getParameter("lat"));
+		double lng  = Double.parseDouble(request.getParameter("lng"));
+		
+		
+		
+		ArrayList<Shop> list = dao.search(lat, lng);
+		
+		String jsonString = GsonGlobal.getInstance().toJson(list);
+		PrintWriter out = response.getWriter();
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		out.write(jsonString);
+		out.flush();
 	}
 
 }

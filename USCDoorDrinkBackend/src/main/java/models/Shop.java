@@ -25,6 +25,22 @@ public class Shop {
 		this.lat = lat;
 		this.lng = lng;
 	}
+	
+	public Shop(String name, String email, String address, String state, String city, String postal, 
+			double lat, double lng, int id
+			) {
+		this.name = name;
+		this.email = email;
+		this.address = address;
+		this.state = state;
+		this.city = city;
+		this.postal = postal;
+		this.id = id;
+		this.lat = lat;
+		this.lng = lng;
+		
+	}
+	
 	public String getEmail() {
 		return email;
 	}

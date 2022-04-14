@@ -12,7 +12,7 @@ import com.google.maps.model.LatLng;
 
 import models.Shop;
 
-public class CustomerMapDAO{
+public class CustomerMapDAO {
 
 	
 	
@@ -20,7 +20,7 @@ public class CustomerMapDAO{
 	
 	
 	private String insertion = "INSERT INTO customers(?,?,?,?,?,?)";
-	private String searchMap = "SELECT id, (3959 *acos(cos(radians(?))*cos(radians(lat))*cos(radians(lng)-radians(?))+sin(radians(?))*sin(radians(lat )))) AS distance FROM shops HAVING distance < 15 ORDER BY distance LIMIT 0, 20";
+	private String searchMap = "SELECT id,name,email,address,state,city,postal,lat,lng, (3959 *acos(cos(radians(?))*cos(radians(lat))*cos(radians(lng)-radians(?))+sin(radians(?))*sin(radians(lat )))) AS distance FROM shops HAVING distance < 5 ORDER BY distance LIMIT 0, 20";
 	private String findShop = "SELECT * FROM shops WHERE id = ?";
 	
 	
@@ -33,19 +33,31 @@ public class CustomerMapDAO{
 	
 
 	
-	public ArrayList<Integer> search(LatLng coord) {
+	public ArrayList<Shop> search(double lat, double lng) {
 		// TODO Auto-generated method stub
-		ArrayList<Integer> idList = new ArrayList<Integer>();
+		ArrayList<Shop> idList = new ArrayList<Shop>();
+		LatLng coord = new LatLng(lat,lng);
 		Connection conn = ConnectionFactory.initializeConnection();
 		try {
 			PreparedStatement prep = conn.prepareStatement(searchMap);
 			prep.setString(1, String.valueOf(coord.lat));
 			prep.setString(2, String.valueOf(coord.lng));
 			prep.setString(3, String.valueOf(coord.lat));
-			ResultSet resObj = prep.executeQuery();
-			while(resObj.next()) {
+			ResultSet res = prep.executeQuery();
+			while(res.next()) {
 				
-				idList.add(Integer.parseInt(resObj.getString("id")));
+				String name = res.getString("name");
+				String address = res.getString("address");
+				String email = res.getString("email");
+				String postal = res.getString("postal");
+				String state = res.getString("state");
+				String city = res.getString("city");
+				int _id = res.getInt("id");
+				double _lat = res.getDouble("lat");
+				double _lng = res.getDouble("lng");
+				
+				Shop shop = new Shop(name, email, address, state, city, postal, _lat, _lng,_id);
+				idList.add(shop);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -72,16 +84,18 @@ public class CustomerMapDAO{
 			prep.setString(1, id.toString());
 			ResultSet res = prep.executeQuery();
 			while(res.next()) {
-				String address = res.getString("addresss");
+				String name = res.getString("name");
+				String address = res.getString("address");
 				String email = res.getString("email");
-				String postal = res.getString("postal;");
+				String postal = res.getString("postal");
 				String state = res.getString("state");
+				String city = res.getString("city");
 				int _id = res.getInt("id");
 				double lat = res.getDouble("lat");
 				double lng = res.getDouble("lng");
 				
-//				Shop shop = new Shop(email, _id, address, state, postal, lat, lng);
-//				lsit.add(shop);
+				Shop shop = new Shop(name, email, address, state, city, postal, lat, lng,_id);
+				lsit.add(shop);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -95,6 +109,14 @@ public class CustomerMapDAO{
 		
 		return lsit;
 	}
+
+
+
+
+	
+
+
+
 
 	
 
