@@ -53,7 +53,7 @@ public class UserLoginDAOUnitTest {
     }
     @Test
     public void emailInDatabaseShops_ValidAll_ReturnsTrue(){
-        assertEquals(true, userLoginDAO.find("shop1@gmail", "123", "shops"));
+        assertEquals(true, userLoginDAO.find("shop1@gmail.com", "123", "shops"));
     }
 
     @Test
@@ -63,17 +63,17 @@ public class UserLoginDAOUnitTest {
 
     @Test
     public void emailInDatabaseShops_InvalidPassword_ReturnsFalse(){
-        assertEquals(false, userLoginDAO.find("shop1@gmail", "1", "shops"));
+        assertEquals(false, userLoginDAO.find("shop1@gmail.com", "1", "shops"));
     }
 
     @Test
     public void emailInDatabaseShops_InvalidType_ReturnsFalse(){
-        assertEquals(false, userLoginDAO.find("shop1@gmail", "1", "customers"));
+        assertEquals(false, userLoginDAO.find("shop1@gmail.com", "1", "customers"));
     }
 
     @Test
     public void emailInDatabaseCustomers_ValidAll_ReturnsTrue(){
-        assertEquals(true, userLoginDAO.find("c1@gmail", "123", "customers"));
+        assertEquals(true, userLoginDAO.find("c1@gmail.com", "123", "customers"));
     }
 
     @Test
@@ -83,11 +83,11 @@ public class UserLoginDAOUnitTest {
 
     @Test
     public void emailInDatabaseCustomers_InvalidPassword_ReturnsFalse(){
-        assertEquals(false, userLoginDAO.find("c1@gmail", "1", "customers"));
+        assertEquals(false, userLoginDAO.find("c1@gmail.com", "1", "customers"));
     }
 
     @Test
     public void emailInDatabaseCustomers_InvalidType_ReturnsFalse(){
-        assertEquals(false, userLoginDAO.find("c1@gmail", "123", "shops"));
+        assertEquals(false, userLoginDAO.find("c1@gmail.com", "123", "shops"));
     }
 }
