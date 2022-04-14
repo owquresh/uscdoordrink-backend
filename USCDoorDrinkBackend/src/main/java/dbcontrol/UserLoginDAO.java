@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 
 public class UserLoginDAO implements UserDAO {
 
@@ -69,5 +70,14 @@ public class UserLoginDAO implements UserDAO {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
+	public static boolean validEmail(String email) {
+		String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+				"[a-zA-Z0-9_+&*-]+)*@" +
+				"(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+				"A-Z]{2,7}$";
+		Pattern pattern = Pattern.compile(emailRegex);
+		if (email == null) return false;
+		return pattern.matcher(email).matches();
+	}
 }
