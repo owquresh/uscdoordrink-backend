@@ -26,6 +26,32 @@ public class Customer {
 		this.lat = lat;
 		this.lng = lng;
 	}
+	public Customer(String name, String email, String pass, String address, String state, String city, String postal, double lat, double lng) {
+		super();
+		this.name = name;
+		this.pass = pass;
+		this.city = city;
+		this.email = email;
+		this.id = id;
+		this.address = address;
+		this.state = state;
+		this.postal = postal;
+		this.lat = lat;
+		this.lng = lng;
+	}
+	public Customer(int id, String name, String email, String pass, String address, String state, String city, String postal, double lat, double lng) {
+		super();
+		this.name = name;
+		this.pass = pass;
+		this.city = city;
+		this.email = email;
+		this.id = id;
+		this.address = address;
+		this.state = state;
+		this.postal = postal;
+		this.lat = lat;
+		this.lng = lng;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -51,6 +77,9 @@ public class Customer {
 	public String getState() {
 		return state;
 	}
+	public String getFormattedAddress() {
+		return address + " " + city + ", " + state + " " + postal;
+	}
 	public void setState(String state) {
 		this.state = state;
 	}
@@ -72,7 +101,9 @@ public class Customer {
 	public void setLng(double lng) {
 		this.lng = lng;
 	}
-
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
 
 
 //	private ArrayList<Order> orderHistory;
