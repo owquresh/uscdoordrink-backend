@@ -69,4 +69,6 @@ VALUES("shop 2", "shop2@gmail.com", "123", "2701 S Vermont Ave", "CA", 34.030041
 INSERT INTO shops(name, email, password, address, state, lat, lng, postal, city)
 VALUES("shop 3", "shop3@gmail.com", "123", "1101 W 23rd St", "CA", 34.035049, -118.283539, "9007", "University Park"); 
 INSERT INTO shops(name, email, password, address, state, lat, lng, postal, city)
-VALUES("shop 4", "shop4@gmail.com", "123", "3758 S Figueroa St", "CA", 34.016788, -118.282722, "9007", "Los Angeles"); 
+VALUES("shop 4", "shop4@gmail.com", "123", "3758 S Figueroa St", "CA", 34.016788, -118.282722, "9007", "Los Angeles");
+INSERT INTO customers(name, email, password, address, state, lat, lng, postal, city)
+VALUES("customer 1", "c1@gmail.com", "123", "2810 S Figueroa St", "CA", 34.026192, -118.276993, "9007", "Los Angeles"); 
