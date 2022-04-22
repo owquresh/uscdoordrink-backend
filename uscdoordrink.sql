@@ -72,3 +72,18 @@ INSERT INTO shops(name, email, password, address, state, lat, lng, postal, city)
 VALUES("shop 4", "shop4@gmail.com", "123", "3758 S Figueroa St", "CA", 34.016788, -118.282722, "9007", "Los Angeles");
 INSERT INTO customers(name, email, password, address, state, lat, lng, postal, city)
 VALUES("customer 1", "c1@gmail.com", "123", "2810 S Figueroa St", "CA", 34.026192, -118.276993, "9007", "Los Angeles"); 
+INSERT INTO customers(name, email, password, address, state, lat, lng, postal, city)
+VALUES("customer 2", "c2@gmail.com", "123", "2810 S Figueroa St", "CA", 34.026192, -118.276993, "9007", "Los Angeles"); 
+INSERT INTO customers(name, email, password, address, state, lat, lng, postal, city)
+VALUES("customer 3", "c3@gmail.com", "123", "2810 S Figueroa St", "CA", 34.026192, -118.276993, "9007", "Los Angeles"); 
+INSERT INTO orders (customerID, shopID, total_caffeiene)
+VALUES (1, 1, 200);
+INSERT INTO orders (customerID, shopID, total_caffeiene)
+VALUES (1, 1, 200);
+INSERT INTO orders (customerID, shopID, total_caffeiene)
+VALUES (2, 1, 200);
+INSERT INTO orders (customerID, shopID, total_caffeiene)
+VALUES (3, 1, 400);
+INSERT INTO orders (customerID, shopID, total_caffeiene)
+VALUES (3, 2, 100);
+
