@@ -30,7 +30,6 @@ public class caffineChecker {
 			prep.setInt(1,customerID);
 			rs = prep.executeQuery();
 			while(rs.next()) {
-				System.out.println(rs.getInt("total_caffeiene"));
 				sum += rs.getInt("total_caffeiene");
 			}
 			return sum;
