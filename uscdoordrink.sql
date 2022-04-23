@@ -32,11 +32,11 @@ create table if not exists shops(
 	
 );
 
-
 create table if not exists shopitems(
 	shopID mediumint not null,
 	item varchar(30) not null,
 	description varchar(100),
+    caffine double not null,
 	url varchar(256),  
 	foreign key(shopID) references shops(id)
 );
@@ -46,7 +46,7 @@ create table if not exists orders(
     	orderID int not null auto_increment,
     	customerID mediumint not null,
     	shopID mediumint not null,
-    	total_caffeiene double not null,
+    	total_caffine double not null,
     	orderTime timestamp default current_timestamp,
         deliveredTime timestamp,
    	foreign key(customerID) references customers(id),
@@ -76,14 +76,16 @@ INSERT INTO customers(name, email, password, address, state, lat, lng, postal, c
 VALUES("customer 2", "c2@gmail.com", "123", "2810 S Figueroa St", "CA", 34.026192, -118.276993, "9007", "Los Angeles"); 
 INSERT INTO customers(name, email, password, address, state, lat, lng, postal, city)
 VALUES("customer 3", "c3@gmail.com", "123", "2810 S Figueroa St", "CA", 34.026192, -118.276993, "9007", "Los Angeles"); 
-INSERT INTO orders (customerID, shopID, total_caffeiene)
+INSERT INTO orders (customerID, shopID, total_caffine)
 VALUES (1, 1, 200);
-INSERT INTO orders (customerID, shopID, total_caffeiene)
+INSERT INTO orders (customerID, shopID, total_caffine)
 VALUES (1, 1, 200);
-INSERT INTO orders (customerID, shopID, total_caffeiene)
+INSERT INTO orders (customerID, shopID, total_caffine)
 VALUES (2, 1, 200);
-INSERT INTO orders (customerID, shopID, total_caffeiene)
+INSERT INTO orders (customerID, shopID, total_caffine)
 VALUES (3, 1, 400);
-INSERT INTO orders (customerID, shopID, total_caffeiene)
+INSERT INTO orders (customerID, shopID, total_caffine)
 VALUES (3, 2, 100);
+INSERT INTO shopitems (shopID, item, caffine, description)
+VALUES (1, "Black Coffee", 300, "300ml black coffee")
 

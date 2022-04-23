@@ -26,11 +26,11 @@ public class caffineChecker {
 		Connection conn = ConnectionFactory.initializeConnection();
 		try {
 			PreparedStatement prep = null;
-			prep = conn.prepareStatement("SELECT total_caffeiene FROM orders WHERE customerID=? AND orderTime >= now() - INTERVAL 1 DAY;");
+			prep = conn.prepareStatement("SELECT total_caffine FROM orders WHERE customerID=? AND orderTime >= now() - INTERVAL 1 DAY;");
 			prep.setInt(1,customerID);
 			rs = prep.executeQuery();
 			while(rs.next()) {
-				sum += rs.getInt("total_caffeiene");
+				sum += rs.getInt("total_caffine");
 			}
 			return sum;
 		}catch (SQLException e) {
