@@ -33,6 +33,7 @@ create table if not exists shops(
 );
 
 create table if not exists shopitems(
+	itemID mediumint not null auto_increment,
 	shopID mediumint not null,
 	item varchar(30) not null,
 	description varchar(100),
@@ -40,7 +41,8 @@ create table if not exists shopitems(
     price double not null, 
     discountPrice double,
 	url varchar(256),  
-	foreign key(shopID) references shops(id)
+	foreign key(shopID) references shops(id),
+    primary key(itemID)
 );
 
 
