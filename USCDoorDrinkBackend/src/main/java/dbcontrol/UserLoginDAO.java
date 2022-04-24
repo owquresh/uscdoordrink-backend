@@ -31,7 +31,7 @@ public class UserLoginDAO implements UserDAO {
 				rs = prep.executeQuery();
 			}
 			while(rs.next()) {
-				System.out.println(rs.getString("email")+rs.getString("password"));
+				//System.out.println(rs.getString("email")+rs.getString("password"));
 				if(rs.getString("email").equals(email) && rs.getString("password").equals(password)) {
 					return true;
 				}

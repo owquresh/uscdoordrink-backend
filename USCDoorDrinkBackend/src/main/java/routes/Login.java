@@ -45,12 +45,12 @@ public class Login extends HttpServlet {
 		
 		String newType = (type.equals("Customer")) ? (newType = "customers") :  (newType = "shops");
 		
-		System.out.println(email+password+newType);
+		//System.out.println(email+password+newType);
 		
 		UserDAO dao = new UserLoginDAO();
 		boolean result = dao.find(email,password,newType);
 		
-		System.out.println(result);
+		//System.out.println(result);
 		if(result==true) {
 			response.setStatus(200);
 		}else {
