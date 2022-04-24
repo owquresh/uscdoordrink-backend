@@ -24,6 +24,12 @@
   	<description></description>
   	<servlet-class>routes.Login</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AddMenuItem</servlet-name>
+  	<display-name>AddMenuItem</display-name>
+  	<description></description>
+  	<servlet-class>routes.AddMenuItem</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Register</servlet-name>
   	<url-pattern>/Register</url-pattern>
@@ -35,6 +41,10 @@
   <servlet-mapping>
   	<servlet-name>Login</servlet-name>
   	<url-pattern>/Login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddMenuItem</servlet-name>
+  	<url-pattern>/AddMenuItem</url-pattern>
   </servlet-mapping>
 
 </web-app>
