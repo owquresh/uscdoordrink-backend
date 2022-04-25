@@ -48,8 +48,8 @@ public class Data extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-gprintln("Request sent through");
 
-    	System.out.println(request.getParameter("email"));
-    	System.out.println(request.getParameter("type"));
+    	//System.out.println(request.getParameter("email"));
+    	//System.out.println(request.getParameter("type"));
 
         try
         {
@@ -67,7 +67,7 @@ public class Data extends HttpServlet {
 
                // create the java statement
                PreparedStatement st = conn.prepareStatement(query);
-               System.out.println(request.getParameter("email"));
+               //System.out.println(request.getParameter("email"));
                //st.setString(1, emailParam);
 
 
@@ -88,10 +88,10 @@ public class Data extends HttpServlet {
                    shops.add(curr);
 
 
-                   System.out.println(name + " " + email+ " "+ password + " " + address + " " + state + " " + postal + " " + city);
-                   System.out.println("");
+                   //System.out.println(name + " " + email+ " "+ password + " " + address + " " + state + " " + postal + " " + city);
+                   //System.out.println("");
                    // print the results
-                   System.out.println(curr.getName() + curr.getEmail() + curr.getPass() + curr.getAddress() + curr.getState() + curr.getCity() + curr.getPostal());
+                   //System.out.println(curr.getName() + curr.getEmail() + curr.getPass() + curr.getAddress() + curr.getState() + curr.getCity() + curr.getPostal());
                }
                response.setContentType("application/json");
                response.setCharacterEncoding("UTF-8");
@@ -106,7 +106,7 @@ public class Data extends HttpServlet {
 
                // create the java statement
                PreparedStatement st = conn.prepareStatement(query);
-               System.out.println(request.getParameter("email"));
+               //System.out.println(request.getParameter("email"));
                //st.setString(1, emailParam);
 
 
@@ -127,10 +127,10 @@ public class Data extends HttpServlet {
                    customers.add(curr);
 
 
-                   System.out.println(name + " " + email+ " "+ password + " " + address + " " + state + " " + postal + " " + city);
-                   System.out.println("");
+                   //System.out.println(name + " " + email+ " "+ password + " " + address + " " + state + " " + postal + " " + city);
+                   //System.out.println("");
                    // print the results
-                   System.out.println(curr.getName() + curr.getEmail() + curr.getPass() + curr.getAddress() + curr.getState() + curr.getCity() + curr.getPostal());
+                   //System.out.println(curr.getName() + curr.getEmail() + curr.getPass() + curr.getAddress() + curr.getState() + curr.getCity() + curr.getPostal());
                }
                response.setContentType("application/json");
                response.setCharacterEncoding("UTF-8");

@@ -7,21 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dbcontrol.UserDAO;
-import dbcontrol.UserLoginDAO;
-import dbcontrol.UserRegisterDAO;
+import dbcontrol.AddMenuItemDAO;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class AddMenuItem
  */
-@WebServlet(name = "Login", urlPatterns = "/Login")
-public class Login extends HttpServlet {
+@WebServlet(name = "AddMenuItem", urlPatterns = "/AddMenuItem")
+public class AddMenuItem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public AddMenuItem() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,21 +38,25 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		String type = request.getParameter("type");
+		String itemName = request.getParameter("name");
+		String description = request.getParameter("description");
+		String caffine = request.getParameter("caffine");
+		String price = request.getParameter("price");
+		String discountprice = request.getParameter("discountprice");
 		
-		String newType = (type.equals("Customer")) ? (newType = "customers") :  (newType = "shops");
-		
-		//System.out.println(email+password+newType);
-		
-		UserDAO dao = new UserLoginDAO();
-		boolean result = dao.find(email,password,newType);
-		
-		//System.out.println(result);
-		if(result==true) {
-			response.setStatus(200);
-		}else {
+		if(email == null || itemName == null || caffine == null || price == null) {
+			response.setStatus(500);
 			response.sendError(500);
+			return;
+		}
+		
+		AddMenuItemDAO dao = new AddMenuItemDAO();
+		
+		boolean res = dao.insertHelper(email, itemName, description, caffine, price, discountprice);
+		if(res == false) {
+			response.setStatus(500);
+		}else {
+			response.setStatus(200);
 		}
 	}
 

@@ -20,7 +20,7 @@ public class UserRegisterDAO implements UserDAO{
 		
 		if(name == null|| !validEmail(email) || password==null|| address==null || city==null || state==null
 				|| postal == null || type == null || lat==null || lng == null) {
-			System.out.println("Here1");
+			//System.out.println("Here1");
 			return false;
 		}
 	
@@ -49,7 +49,7 @@ public class UserRegisterDAO implements UserDAO{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			ConnectionFactory.closeConnection();
-			System.out.println("Here2");
+			//System.out.println("Here2");
 			return false;
 			
 		}

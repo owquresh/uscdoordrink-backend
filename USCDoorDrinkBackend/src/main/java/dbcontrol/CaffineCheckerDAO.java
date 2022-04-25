@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class caffineChecker {
+public class CaffineCheckerDAO {
 	
 	public static boolean overCaffineLimit(String email) {
 		int todayCaffine = findTotalCaffine(email);
