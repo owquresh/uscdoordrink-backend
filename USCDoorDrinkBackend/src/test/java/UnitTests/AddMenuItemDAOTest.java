@@ -61,13 +61,13 @@ public class AddMenuItemDAOTest {
 	@Test
 	public void test6() {
 		AddMenuItemDAO dao = new AddMenuItemDAO();
-		assertEquals(true, dao.insertHelper("shop1@gmail.com", "Hot Chocolate", null, "5", "3.99", null));
+		assertEquals(true, dao.insertHelper("shop1@gmail.com", "Hot Chocolate", "", "5", "3.99", ""));
 	}
 	
 	@Test
 	public void test7() {
 		AddMenuItemDAO dao = new AddMenuItemDAO();
-		assertEquals(true, dao.insertHelper("shop2@gmail.com", "Green Tea", null, "30", "5.99", "4.99"));
+		assertEquals(true, dao.insertHelper("shop2@gmail.com", "Green Tea", "", "30", "5.99", "4.99"));
 	}
 	
 	@Test
@@ -103,7 +103,7 @@ public class AddMenuItemDAOTest {
 	@Test
 	public void test13() {
 		AddMenuItemDAO dao = new AddMenuItemDAO();
-		assertEquals(false, dao.insertHelper("shop3@gmail.com", null, "Best thing you will ever have", "30", "5.99", "4.99"));
+		assertEquals(true, dao.insertHelper("shop3@gmail.com", "", "Best thing you will ever have", "30", "5.99", "4.99"));
 	}
 }
 
