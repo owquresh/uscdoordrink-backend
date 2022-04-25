@@ -30,6 +30,12 @@
   	<description></description>
   	<servlet-class>routes.AddMenuItem</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>EditAddress</servlet-name>
+  	<display-name>EditAddress</display-name>
+  	<description></description>
+  	<servlet-class>routes.EditAddress</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Register</servlet-name>
   	<url-pattern>/Register</url-pattern>
@@ -45,6 +51,10 @@
   <servlet-mapping>
   	<servlet-name>AddMenuItem</servlet-name>
   	<url-pattern>/AddMenuItem</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EditAddress</servlet-name>
+  	<url-pattern>/EditAddress</url-pattern>
   </servlet-mapping>
 
 </web-app>
