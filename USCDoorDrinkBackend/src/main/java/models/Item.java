@@ -1,13 +1,13 @@
 package models;
 
 public class Item {
-	private int itemID;
+	private int shopID;
 	private String itemName;
-	private int type;
-	public Item(int itemID, String itemName, int type, double caffiene, double cost, double discount) {
-		this.itemID = itemID;
+	private String description;
+	public Item(int shopID, String itemName, String description, double caffiene, double cost, double discount) {
+		this.shopID = shopID;
 		this.itemName = itemName;
-		this.type = type;
+		this.description = description;
 		this.caffiene = caffiene;
 		this.cost = cost;
 		this.discount = discount;
@@ -15,6 +15,17 @@ public class Item {
 	private double caffiene;
 	private double cost;
 	private double discount;
-	
-	
+
+	public double getCaffiene() {
+		return caffiene;
+	}
+
+	public double getDiscount() {
+		return discount;
+	}
+
+	public int getShopID() {
+		return shopID;
+	}
+
 }
