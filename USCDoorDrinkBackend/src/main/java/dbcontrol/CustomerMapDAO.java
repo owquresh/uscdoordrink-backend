@@ -21,7 +21,7 @@ public class CustomerMapDAO {
 	
 	private String insertion = "INSERT INTO customers(?,?,?,?,?,?)";
 	private String searchMap = "SELECT id,name,email,address,state,city,postal,lat,lng, (3959 *acos(cos(radians(?))*cos(radians(lat))*cos(radians(lng)-radians(?))+sin(radians(?))*sin(radians(lat )))) AS distance FROM shops HAVING distance < 5 ORDER BY distance LIMIT 0, 20";
-	private String findShop = "SELECT * FROM shops WHERE id = ?";
+	private String findShop = "SELECT lat,lng FROM ? WHERE email=?";
 	
 	
 	public boolean insert() {
@@ -75,27 +75,30 @@ public class CustomerMapDAO {
 		return idList;
 	}
 
-	public ArrayList<Shop> find(Integer id) {
+	public Shop find(String email, String type) {
 		// TODO Auto-generated method stub
 		Connection conn = ConnectionFactory.initializeConnection();
 		ArrayList<Shop> lsit = new ArrayList<Shop>();
 		try {
 			PreparedStatement prep = conn.prepareStatement(findShop);
-			prep.setString(1, id.toString());
+			prep.setString(1, type);
+			prep.setString(2, email);
 			ResultSet res = prep.executeQuery();
-			while(res.next()) {
+			if(res.next()) {
 				String name = res.getString("name");
 				String address = res.getString("address");
-				String email = res.getString("email");
+				String email1 = res.getString("email");
 				String postal = res.getString("postal");
 				String state = res.getString("state");
 				String city = res.getString("city");
 				int _id = res.getInt("id");
 				double lat = res.getDouble("lat");
 				double lng = res.getDouble("lng");
-				
-				Shop shop = new Shop(name, email, address, state, city, postal, lat, lng,_id);
-				lsit.add(shop);
+				System.out.println(name);
+				Shop shop = new Shop(name, email1, address, state, city, postal, lat, lng,_id);
+				return shop;
+			}else {
+				return null;
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -107,7 +110,7 @@ public class CustomerMapDAO {
 			e.printStackTrace();
 		}
 		
-		return lsit;
+		return null;
 	}
 
 

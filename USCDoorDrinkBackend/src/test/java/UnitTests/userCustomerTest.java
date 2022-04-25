@@ -27,7 +27,6 @@ public class userCustomerTest {
 		cust.setPass("pass");
 		assertEquals("pass",cust.getPass());
 	}
-	
 	@Test
 	public void test4() {
 		Customer cust = new Customer("Omar", "omar@omar.com", "123", "925 W 30th Street", "CA", "Los Angeles","90007",30,100);

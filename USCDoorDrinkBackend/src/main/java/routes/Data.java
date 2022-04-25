@@ -98,11 +98,11 @@ public class Data extends HttpServlet {
                PrintWriter pw = response.getWriter();
                pw.print(GsonGlobal.getInstance().toJson(shops));
                pw.flush();
-
+               conn.close();
                st.close();
            }
            else{
-               String query = "SELECT name, email, password, address, state, postal, city FROM customers WHERE email=\""+emailParam+"\"";
+               String query = "SELECT name, email, password, address, state, postal, city, id, lat, lng FROM customers WHERE email=\""+emailParam+"\"";
 
                // create the java statement
                PreparedStatement st = conn.prepareStatement(query);
@@ -123,7 +123,11 @@ public class Data extends HttpServlet {
                    String state = rs.getString("state");
                    String postal = rs.getString("postal");
                    String city = rs.getString("city");
-                   Customer curr = new Customer(name, email, password, address, state, city, postal);
+                   int id = Integer.parseInt(rs.getString("id"));
+                   double lat = Double.valueOf(rs.getString("lat"));
+                   double lng = Double.valueOf(rs.getString("lng"));
+                   
+                   Customer curr = new Customer(id, name, email, password, address, state, city, postal, lat, lng);
                    customers.add(curr);
 
 
@@ -137,7 +141,7 @@ public class Data extends HttpServlet {
                PrintWriter pw = response.getWriter();
                pw.print(GsonGlobal.getInstance().toJson(customers));
                pw.flush();
-
+               conn.close();
                st.close();
 
            }

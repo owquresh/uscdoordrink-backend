@@ -39,17 +39,11 @@ public class Search extends HttpServlet {
 		
 		
 	
-		CustomerMapDAO dao = new CustomerMapDAO();
-		double lat  = Double.parseDouble(request.getParameter("lat"));
-		double lng  = Double.parseDouble(request.getParameter("lng"));
-		ArrayList<Shop> list = dao.find(1);
-		String jsonString = GsonGlobal.getInstance().toJson(list);
-	
 		
 		PrintWriter out = response.getWriter();
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		out.write(jsonString);
+		out.write("null");
 		out.flush();
 	}
 
@@ -59,12 +53,13 @@ public class Search extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		CustomerMapDAO dao = new CustomerMapDAO();
+		
 		double lat  = Double.parseDouble(request.getParameter("lat"));
 		double lng  = Double.parseDouble(request.getParameter("lng"));
 		
-		
-		
-		ArrayList<Shop> list = dao.search(lat, lng);
+		System.out.println(lat);
+		System.out.println(lng);
+		ArrayList<Shop> list = dao.search(lat,lng);
 		
 		String jsonString = GsonGlobal.getInstance().toJson(list);
 		PrintWriter out = response.getWriter();
