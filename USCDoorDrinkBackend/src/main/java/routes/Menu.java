@@ -51,24 +51,17 @@ public class Menu extends HttpServlet {
 
         try
         {
-            // create our mysql database connection
-//            request.getParameter("type");
-//            String emailParam = request.getParameter("email");
+
             Connection conn = ConnectionFactory.initializeConnection();
 
-           // if(request.getParameter("type").equals("shop")){
-                // our SQL SELECT query.
-                // if you only need a few columns, specify them by name instead of using "*"
 
-
-                String query = "SELECT itemID, shopID, item, description, caffine, price FROM shopitems";
+                int shopIDNumber = Integer.parseInt(request.getParameter("shopID"));
+                System.out.println("Shop ID is: " + shopIDNumber);
+                String query = "SELECT itemID, shopID, item, description, caffine, price FROM shopitems WHERE shopID=\""+shopIDNumber+"\"";
 
                 // create the java statement
                 PreparedStatement st = conn.prepareStatement(query);
-                //System.out.println(request.getParameter("email"));
-                //st.setString(1, emailParam);
-
-
+                //st.setString(1, request.getParameter("shopID"));
                 // execute the query, and get a java resultset
                 ResultSet rs = st.executeQuery(query);
                 ArrayList<Item> items  = new ArrayList<Item>();
@@ -85,11 +78,10 @@ public class Menu extends HttpServlet {
                     Item curr = new Item(shopId, item, description, caffineAmount, price, 0);
                     items.add(curr);
 
-
+                    //print the results
                     System.out.println(shopId + " " + item + " "+ description + " " + caffineAmount + " " + price);
                     System.out.println("");
-//                    // print the results
-//                    System.out.println(curr.getName() + curr.getEmail() + curr.getPass() + curr.getAddress() + curr.getState() + curr.getCity() + curr.getPostal());
+
                 }
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
@@ -107,7 +99,6 @@ public class Menu extends HttpServlet {
         response.setStatus(200);
 
     }
-
 
 
     /**

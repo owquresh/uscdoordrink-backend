@@ -8,7 +8,7 @@ public class ConnectionFactory {
 
 	public static final String URL = "jdbc:mysql://localhost:3306/uscdoordrink";
 	public static final String USER = "root";
-	public static final String PASS = "12345678";
+	public static final String PASS = "root";
 	
 	public static Connection conn;
 	public static Connection initializeConnection() {
