@@ -23,6 +23,7 @@ public class Order {
         this.orderTime=orderTime;
         this.orderItem=orderItem;
     }
+    
     public void setDeliveryTime(Timestamp deliveryTime){this.deliveryTime=deliveryTime;}
     public Timestamp getDeliveryTime(){return deliveryTime;}
 
