@@ -52,6 +52,7 @@ create table if not exists orders(
     	shopID mediumint not null,
     	total_caffine double not null,
     	orderTime timestamp default current_timestamp,
+        orderitem varchar(200) not null,
         deliveredTime timestamp,
    	foreign key(customerID) references customers(id),
     	foreign key(shopID) references shops(id),
@@ -77,12 +78,12 @@ VALUES
 ("customer 1", "c1@gmail.com", "123", "2810 S Figueroa St", "CA", 34.026192, -118.276993, "90007", "Los Angeles"),
 ("customer 2", "c2@gmail.com", "123", "2810 S Figueroa St", "CA", 34.026192, -118.276993, "90007", "Los Angeles"),
 ("customer 3", "c3@gmail.com", "123", "2810 S Figueroa St", "CA", 34.026192, -118.276993, "90007", "Los Angeles"); 
-INSERT INTO orders (customerID, shopID, total_caffine)
-VALUES (1, 1, 200),
-(1, 1, 200),
-(2, 1, 200),
-(3, 1, 400),
-(3, 2, 100);
+INSERT INTO orders (customerID, shopID, total_caffine, orderItem)
+VALUES (1, 1, 96, 1),
+(1, 1, 45, 2),
+(2, 1, 30, 3),
+(3, 1, 400, 4),
+(3, 2, 1, 5);
 INSERT INTO shopitems (shopID, item, caffine, description, price)
 VALUES 
 (1, "Black Coffee", 96, "300ml black coffee", 2.99),
@@ -91,7 +92,7 @@ VALUES
 (1, "The devil", 400 , "100ml of pure caffine, NSFW", 6.99);
 INSERT INTO shopitems (shopID, item, caffine, description, price, discountPrice)
 VALUES 
-(1, "Seasonal Tea", 0, "Only for summer", 5.99,4.99);
+(2, "Seasonal Tea", 1, "Only for summer", 5.99,4.99);
 
 
 

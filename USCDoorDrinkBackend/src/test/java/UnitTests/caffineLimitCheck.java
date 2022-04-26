@@ -45,17 +45,17 @@ public class caffineLimitCheck {
 	
 	@Test
 	public void testCorrectCaffine1_returnsTrue() {
-		assertEquals(400, CaffineCheckerDAO.findTotalCaffine("c1@gmail.com"));
+		assertEquals(141, CaffineCheckerDAO.findTotalCaffine("c1@gmail.com"));
 	}
 	
 	@Test
 	public void testCorrectCaffine2_returnsTrue() {
-		assertEquals(200, CaffineCheckerDAO.findTotalCaffine("c2@gmail.com"));
+		assertEquals(30, CaffineCheckerDAO.findTotalCaffine("c2@gmail.com"));
 	}
 	
 	@Test
 	public void testCorrectCaffine3_returnsTrue() {
-		assertEquals(500, CaffineCheckerDAO.findTotalCaffine("c3@gmail.com"));
+		assertEquals(401, CaffineCheckerDAO.findTotalCaffine("c3@gmail.com"));
 	}
 	
 	@Test
