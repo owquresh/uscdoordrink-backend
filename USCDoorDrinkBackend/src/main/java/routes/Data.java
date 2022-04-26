@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,15 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.maps.model.LatLng;
-
 import dbcontrol.ConnectionFactory;
-import dbcontrol.UserDAO;
-import dbcontrol.UserRegisterDAO;
 import models.Customer;
 import models.Shop;
 import util.GsonGlobal;
-import util.MapGlobal;
 
 
 
@@ -48,7 +42,6 @@ public class Data extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-gprintln("Request sent through");
 
-    	//System.out.println(request.getParameter("email"));
     	//System.out.println(request.getParameter("type"));
 
         try

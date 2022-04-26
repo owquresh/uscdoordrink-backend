@@ -14,6 +14,7 @@ public class EditAddressDAO {
 		
 		Connection conn = ConnectionFactory.initializeConnection();
 		
+		
 		if(address==null || city==null || state==null
 				|| postal == null || type == null || lat==null || lng == null) {
 			//System.out.println("Here1");
@@ -21,7 +22,7 @@ public class EditAddressDAO {
 		}
 		try {
 			PreparedStatement prep = null;
-			if(type.equals("customers")) {
+			if(type.equals("customer")) {
 				 prep = conn.prepareStatement(updateUserCustomers);
 			}else {
 				prep = conn.prepareStatement(updateUserShops);

@@ -18,6 +18,7 @@ import util.MapGlobal;
 
 @WebServlet(name = "EditAddress", urlPatterns = "/EditAddress")
 public class EditAddress extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -41,7 +42,6 @@ public class EditAddress extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("Here");
 		String email = request.getParameter("email");
 		String type = request.getParameter("type");
 		String address = request.getParameter("address");
