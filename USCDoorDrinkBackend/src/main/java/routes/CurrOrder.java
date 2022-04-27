@@ -118,7 +118,8 @@ public class CurrOrder extends HttpServlet {
 					}
 
 					// add order to the list
-					Order curr = new Order(orderID, customerID, address,total_caffine, orderTime, orderItemName);
+					System.out.println("OrderId: "+orderID);
+					Order curr = new Order(orderID, customerID, address,total_caffine, orderTime.toString(), orderItemName);
 					orders.add(curr);
 				}
 			}

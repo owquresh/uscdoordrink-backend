@@ -11,11 +11,11 @@ public class Order {
     private int customerID;
     private String address;
     private int total_caffine;
-    private Timestamp orderTime;
+    private String orderTime;
     private Timestamp deliveryTime;
     private String orderItem;
 
-    public Order(int orderNumber, int customerID, String address, int total_caffine, Timestamp orderTime, String orderItem){
+    public Order(int orderNumber, int customerID, String address, int total_caffine, String orderTime, String orderItem){
         this.orderNumber=orderNumber;
         this.customerID=customerID;
         this.address=address;
@@ -32,5 +32,5 @@ public class Order {
     public String getAddress() { return address; }
     public int getTotal_caffine() { return total_caffine; }
     public String getOrderItem() { return orderItem; }
-    public Timestamp getOrderTime() { return orderTime; }
+    public String getOrderTime() { return orderTime; }
 }
