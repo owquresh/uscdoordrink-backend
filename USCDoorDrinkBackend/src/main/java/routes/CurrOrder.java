@@ -31,7 +31,7 @@ public class CurrOrder extends HttpServlet {
 	public static final String findItemName = "SELECT item FROM shopItems WHERE itemID=?";
 	public static final String findCustomerAddress = "SELECT address FROM customers WHERE id=?";
 
-	ArrayList<Order> orders  = new ArrayList<>();
+	ArrayList<Order> orders;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -59,6 +59,7 @@ public class CurrOrder extends HttpServlet {
 		PreparedStatement prep = null;
 		PreparedStatement prep2 = null;
 		Connection conn = ConnectionFactory.initializeConnection();
+		orders = new ArrayList<>();
 
 		try {
 			// get the shopID

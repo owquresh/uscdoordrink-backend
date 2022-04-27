@@ -27,6 +27,8 @@ public class Data extends HttpServlet {
 
 
     private static final long serialVersionUID = 1L;
+    public static final String query1 = "SELECT name, email, password, address, state, postal, city FROM shops WHERE email=?";
+    public static final String query2 = "SELECT name, email, password, address, state, postal, city, id, lat, lng FROM customers WHERE email=?";
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -56,16 +58,16 @@ public class Data extends HttpServlet {
                // if you only need a few columns, specify them by name instead of using "*"
 
 
-               String query = "SELECT name, email, password, address, state, postal, city FROM shops WHERE email=\""+emailParam+"\"";
+               
 
                // create the java statement
-               PreparedStatement st = conn.prepareStatement(query);
+               PreparedStatement st = conn.prepareStatement(query1);
                //System.out.println(request.getParameter("email"));
-               //st.setString(1, emailParam);
+               st.setString(1, emailParam);
 
 
                // execute the query, and get a java resultset
-               ResultSet rs = st.executeQuery(query);
+               ResultSet rs = st.executeQuery();
                ArrayList<Shop> shops  = new ArrayList<Shop>();
                // iterate through the java resultset
                while (rs.next())
@@ -95,16 +97,16 @@ public class Data extends HttpServlet {
                st.close();
            }
            else{
-               String query = "SELECT name, email, password, address, state, postal, city, id, lat, lng FROM customers WHERE email=\""+emailParam+"\"";
+               
 
                // create the java statement
-               PreparedStatement st = conn.prepareStatement(query);
+               PreparedStatement st = conn.prepareStatement(query2);
                //System.out.println(request.getParameter("email"));
-               //st.setString(1, emailParam);
+               st.setString(1, emailParam);
 
 
                // execute the query, and get a java resultset
-               ResultSet rs = st.executeQuery(query);
+               ResultSet rs = st.executeQuery();
                ArrayList<Customer> customers  = new ArrayList<Customer>();
                // iterate through the java resultset
                while (rs.next())
