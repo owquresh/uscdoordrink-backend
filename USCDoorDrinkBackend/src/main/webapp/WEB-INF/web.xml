@@ -37,10 +37,16 @@
   	<servlet-class>routes.EditAddress</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>Direction</servlet-name>
-  	<display-name>Direction</display-name>
+  	<servlet-name>CurrOrder</servlet-name>
+  	<display-name>CurrOrder</display-name>
   	<description></description>
-  	<servlet-class>routes.Direction</servlet-class>
+  	<servlet-class>routes.CurrOrder</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>DeliveryComplete</servlet-name>
+  	<display-name>DeliveryComplete</display-name>
+  	<description></description>
+  	<servlet-class>routes.DeliveryComplete</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>Register</servlet-name>
@@ -63,8 +69,12 @@
   	<url-pattern>/EditAddress</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>Direction</servlet-name>
-  	<url-pattern>/Direction</url-pattern>
+  	<servlet-name>CurrOrder</servlet-name>
+  	<url-pattern>/CurrOrder</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DeliveryComplete</servlet-name>
+  	<url-pattern>/DeliveryComplete</url-pattern>
   </servlet-mapping>
 
 </web-app>
