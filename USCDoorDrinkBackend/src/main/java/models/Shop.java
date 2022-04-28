@@ -41,6 +41,21 @@ public class Shop {
 		
 	}
 	
+	public Shop(String name2, String email2, String password, String address2, String state2, String city2,
+			String postal2, double lat2, double lng2, int id2) {
+		// TODO Auto-generated constructor stub
+		this.name = name2;
+		this.email = email2;
+		this.pass = password;
+		this.address = address2;
+		this.state = state2;
+		this.city = city2;
+		this.postal = postal2;
+		this.lat = lat2;
+		this.lng = lng2;
+		this.id = id2;
+	}
+
 	public String getEmail() {
 		return email;
 	}

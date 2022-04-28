@@ -26,7 +26,7 @@ public class CaffineCheckerDAO {
 		Connection conn = ConnectionFactory.initializeConnection();
 		try {
 			PreparedStatement prep = null;
-			prep = conn.prepareStatement("SELECT total_caffine FROM orders WHERE customerID=? AND orderTime >= now() - INTERVAL 1 DAY;");
+			prep = conn.prepareStatement("SELECT total_caffiene FROM orders WHERE customerID=? AND orderTime >= now() - INTERVAL 1 DAY;");
 			prep.setInt(1,customerID);
 			rs = prep.executeQuery();
 			while(rs.next()) {

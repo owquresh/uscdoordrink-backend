@@ -27,7 +27,7 @@ public class Data extends HttpServlet {
 
 
     private static final long serialVersionUID = 1L;
-    public static final String query1 = "SELECT name, email, password, address, state, postal, city FROM shops WHERE email=?";
+    public static final String query1 = "SELECT name, email, password, address, state, postal, city,id, lat, lng FROM shops WHERE email=?";
     public static final String query2 = "SELECT name, email, password, address, state, postal, city, id, lat, lng FROM customers WHERE email=?";
 
     /**
@@ -79,7 +79,10 @@ public class Data extends HttpServlet {
                    String state = rs.getString("state");
                    String postal = rs.getString("postal");
                    String city = rs.getString("city");
-                   Shop curr = new Shop(name, email, password, address, state, city, postal);
+                   int id = Integer.parseInt(rs.getString("id"));
+                   double lat = Double.valueOf(rs.getString("lat"));
+                   double lng = Double.valueOf(rs.getString("lng"));
+                   Shop curr = new Shop(name, email, password, address, state, city, postal,lat,lng,id);
                    shops.add(curr);
 
 
