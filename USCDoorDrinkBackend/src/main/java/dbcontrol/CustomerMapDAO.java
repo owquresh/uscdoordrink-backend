@@ -79,6 +79,7 @@ public class CustomerMapDAO {
 		// TODO Auto-generated method stub
 		Connection conn = ConnectionFactory.initializeConnection();
 		ArrayList<Shop> lsit = new ArrayList<Shop>();
+		
 		try {
 			PreparedStatement prep = conn.prepareStatement(findShop);
 			prep.setString(1, type);
